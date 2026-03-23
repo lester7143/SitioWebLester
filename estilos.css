@@ -13,25 +13,24 @@ body {
     min-height: 100vh;
     background-color: var(--bg-color);
     color: var(--text-color);
-    /* Transición suave para el cambio de color de fondo */
+
     transition: background-color 0.5s ease, color 0.3s ease;
 }
 
-/* Clases dinámicas para el Body */
 body.type-fire { --bg-color: #e74c3c; color: white; }
 body.type-water { --bg-color: #3498db; color: white; }
 body.type-electric { --bg-color: #f1c40f; color: #333; }
 body.type-grass { --bg-color: #2ecc71; color: white; }
 
-/* Contenedor de información */
+
 #infoPokemon {
     margin-top: 30px;
     padding: 25px;
-    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco traslúcido */
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     text-align: center;
-    color: #333; /* El texto de la tarjeta siempre será oscuro para legibilidad */
+    color: #333;
     width: 300px;
 }
 
