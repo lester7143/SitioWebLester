@@ -2,23 +2,25 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Inicio - Cambio de Color</title>
-    <link rel="stylesheet" href="estilos.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador Pokémon - PokeAPI</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <menu-navegacion></menu-navegacion>
-
+    <header>
+        <h1>Buscador de Pokémon</h1>
+    </header>
     <main>
-        <h1>Personaliza tu fondo aplicacion de cambios</h1>
-        <p>Elige un color para cambiar el ambiente:</p>
-        <div class="botones">
-            <button id="btnAzul">Azul</button>
-            <button id="btnRojo">Rojo</button>
-            <button id="btnVerde">Verde</button>
-        </div>
+        <section class="busqueda">
+            <input type="text" id="pokemonName" placeholder="Ej: Pikachu o 25">
+            <button id="btnBuscar">Buscar</button>
+        </section>
+
+        <section id="infoPokemon">
+            <p>Ingresa un nombre para comenzar.</p>
+        </section>
     </main>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

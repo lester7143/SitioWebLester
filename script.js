@@ -1,36 +1,50 @@
+const btnBuscar = document.getElementById('btnBuscar');
+const inputNombrePokemon = document.getElementById('pokemonName');
+const SectionInfoPokemon = document.getElementById('infoPokemon');
 
-const cuerpo = document.body;
-const btnAzul = document.querySelector('#btnAzul');
-const btnRojo = document.querySelector('#btnRojo');
-const btnVerde = document.querySelector('#btnVerde');
+btnBuscar.addEventListener('click', () => {
+    const nombre = inputNombrePokemon.value.toLowerCase().trim();
+    if (nombre) {
+        buscarPokemon(nombre);
+    }
+});
 
+async function buscarPokemon(nombre) {
+    SectionInfoPokemon.innerHTML = '<p>Buscando...</p>';
 
-if (btnAzul) {
-    btnAzul.addEventListener('click', () => cuerpo.style.backgroundColor = '#3498db');
-    btnRojo.addEventListener('click', () => cuerpo.style.backgroundColor = '#e74c3c');
-    btnVerde.addEventListener('click', () => cuerpo.style.backgroundColor = '#2ecc71');
+    try {
+        const respuesta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
+        
+        if (!respuesta.ok) {
+            throw new Error('Pokémon no encontrado');
+        }
+
+        const datos = await respuesta.json();
+        mostrarInfoPokemon(datos);
+
+    } catch (error) {
+        SectionInfoPokemon.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+    }
 }
 
-class MenuNavegacion extends HTMLElement {
-    //equivale al constructor de htmlelement, cuando el dom del sitio se cargue
-    connectedCallback() {
-        this.innerHTML = `
-            <nav class="navbar">
-                <div class="logo">Ejemplo Sitio Web</div>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                    <li><a href="https://google.com" target="_blank">Google</a></li>
-                </ul>
-            </nav>
-        `;
+function mostrarInfoPokemon(datos) {
+    const tipoPrincipal = datos.types[0].type.name;
+     
+    document.body.className = `type-${tipoPrincipal}`;
 
+    const pesoKG = datos.weight / 10;
+    const alturaM = datos.height / 10;
+    const listaTipos = datos.types.map(t => t.type.name).join(', ');
 
-    }//connectedCallback
-
-
-
-}//fin class MenuNavegacion
-
-//objeto html de javasript
-customElements.define('menu-navegacion', MenuNavegacion);
+    SectionInfoPokemon.innerHTML = `
+        <div class="pokemon-card">
+            <img src="${datos.sprites.other['official-artwork'].front_default}" alt="${datos.name}">
+            <h2>${datos.name.toUpperCase()}</h2>
+            <div class="stats">
+                <p><strong>Tipo(s):</strong> ${listaTipos}</p>
+                <p><strong>Peso:</strong> ${pesoKG} kg</p>
+                <p><strong>Altura:</strong> ${alturaM} m</p>
+            </div>
+        </div>
+    `;
+}
