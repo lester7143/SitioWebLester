@@ -17,10 +17,31 @@ body {
     transition: background-color 0.5s ease, color 0.3s ease;
 }
 
-body.type-fire { --bg-color: #e74c3c; color: white; }
-body.type-water { --bg-color: #3498db; color: white; }
-body.type-electric { --bg-color: #f1c40f; color: #333; }
-body.type-grass { --bg-color: #2ecc71; color: white; }
+
+body.type-normal { --bg-color: #A8A77A; color: white; }
+body.type-fire { --bg-color: #EE8130; color: white; }
+body.type-water { --bg-color: #6390F0; color: white; }
+body.type-electric { --bg-color: #F7D02C; color: #333; }
+body.type-grass { --bg-color: #7AC74C; color: white; }
+body.type-ice { --bg-color: #96D9D6; color: #333; }
+
+
+body.type-fighting { --bg-color: #C22E28; color: white; }
+body.type-poison { --bg-color: #A33EA1; color: white; }
+body.type-ground { --bg-color: #E2BF65; color: #333; }
+body.type-flying { --bg-color: #A98FF3; color: white; }
+body.type-psychic { --bg-color: #F95587; color: white; }
+body.type-bug { --bg-color: #A6B91A; color: white; }
+
+
+body.type-rock { --bg-color: #B6A136; color: white; }
+body.type-ghost { --bg-color: #735797; color: white; }
+body.type-dragon { --bg-color: #6F35FC; color: white; }
+body.type-steel { --bg-color: #B7B7CE; color: #333; }
+body.type-dark { --bg-color: #705746; color: white; }
+body.type-fairy { --bg-color: #D685AD; color: white; }
+
+body.type-default { --bg-color: #f4f4f4; color: #333; }
 
 
 #infoPokemon {
