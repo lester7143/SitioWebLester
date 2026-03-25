@@ -1,13 +1,33 @@
+import { EjemploGuardar } from './js/data/EjemploGuardar.js';
+
+
+
 const btnBuscar = document.getElementById('btnBuscar');
+const btnGuardar = document.getElementById('btnGuardar');
+const btnLeer = document.getElementById('btnLeer');
 const inputNombrePokemon = document.getElementById('pokemonName');
 const SectionInfoPokemon = document.getElementById('infoPokemon');
 
 btnBuscar.addEventListener('click', () => {
     const nombre = inputNombrePokemon.value.toLowerCase().trim();
-    if (nombre) {
-        buscarPokemon(nombre);
-    }
 });
+
+btnGuardar.addEventListener('click', () => {
+    const pokemones = [{nombre:'Pikachu', nviel: 25}, {nombre:'Charizard', nviel: 36}];
+    EjemploGuardar.guardarPokemones(pokemones);
+    alert('Pokemon guardado');
+});
+btnLeer.addEventListener('click', () => {
+    const pokemones = EjemploGuardar.obtenerPokemones();
+    alert(pokemones[0].nombre);
+    let datosPojemones = '';
+    pokemones.forEach(p => {
+        datosPojemones += `Nombre: ${p.nombre}, Nivel: ${p.nviel}\n`;
+    });
+    alert(datosPojemones);
+    
+    
+    });
 
 async function buscarPokemon(nombre) {
     SectionInfoPokemon.innerHTML = '<p>Buscando...</p>';
